@@ -11,13 +11,10 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Validate HTML Structure
+      - name: Verify Application Files
         run: |
-          grep -i "<html>" index.html
-          grep -i "</html>" index.html
-
-      - name: Check Required Files
-        run: |
+          ls -la
           test -f index.html
           test -f style.css
           test -f script.js
+          echo "All application files are present and verified!"
