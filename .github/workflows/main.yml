@@ -1,0 +1,23 @@
+name: CI Workflow
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Validate HTML Structure
+        run: |
+          grep -i "<html>" index.html
+          grep -i "</html>" index.html
+
+      - name: Check Required Files
+        run: |
+          test -f index.html
+          test -f style.css
+          test -f script.js
